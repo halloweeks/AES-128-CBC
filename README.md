@@ -144,4 +144,4 @@ This mode does not support padding, so ensure that input blocks are precisely 16
 Contributions are welcome! If you have improvements, bug fixes, or additional features, feel free to submit a pull request.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
