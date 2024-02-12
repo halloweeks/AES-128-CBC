@@ -722,10 +722,11 @@ static void AES_EncryptInit(AES_CTX *ctx, const unsigned char *key) {
 		ctx->roundkey[index + 3] = ctx->roundkey[index - 1] ^ ctx->roundkey[index + 2];
 	}
 	
-	ctx->iv[0] = ctx->roundkey[40];
-	ctx->iv[1] = ctx->roundkey[41];
-	ctx->iv[2] = ctx->roundkey[42];
-	ctx->iv[3] = ctx->roundkey[43];
+	// last roundkey is iv
+	ctx->iv[0] = ctx->roundkey[40] ^ ctx->roundkey[43];
+	ctx->iv[1] = ctx->roundkey[41] ^ ctx->roundkey[42];
+	ctx->iv[2] = ctx->roundkey[42] ^ ctx->roundkey[41];
+	ctx->iv[3] = ctx->roundkey[43] ^ ctx->roundkey[40];
 }
 
 static void AES_DecryptInit(AES_CTX *ctx, const unsigned char *key) {
@@ -751,11 +752,11 @@ static void AES_DecryptInit(AES_CTX *ctx, const unsigned char *key) {
             Td3[Te4[(ctx->roundkey[index] >>  0) & 0xff] & 0xff];
     }
     
-    // Use first round key as iv because it's reverse order
-    ctx->iv[0] = ctx->roundkey[0];
-	ctx->iv[1] = ctx->roundkey[1];
-	ctx->iv[2] = ctx->roundkey[2];
-	ctx->iv[3] = ctx->roundkey[3];
+    // first round key is iv because is reverse order
+    ctx->iv[0] = ctx->roundkey[0] ^ ctx->roundkey[3];
+	ctx->iv[1] = ctx->roundkey[1] ^ ctx->roundkey[2];
+	ctx->iv[2] = ctx->roundkey[2] ^ ctx->roundkey[1];
+	ctx->iv[3] = ctx->roundkey[3] ^ ctx->roundkey[0];
 }
 
 unsigned int AES_Encrypt(AES_CTX *ctx, unsigned char *in_data, unsigned int in_size, unsigned char *out_data) {
