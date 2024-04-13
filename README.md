@@ -1,6 +1,6 @@
 # AES-128-CBC Encryption and Decryption
 
-This repository provides a simple implementation of AES-128-CBC encryption and decryption in C using the `AES.h` header file. AES-128-CBC is a widely used symmetric encryption algorithm that operates on fixed-size blocks of data.
+This repository provides a simple implementation of AES-128-CBC encryption and decryption in C using the `AES_128_CBC.h` header file. AES-128-CBC is a widely used symmetric encryption algorithm that operates on fixed-size blocks of data.
 
 ## Table of Contents
 
@@ -31,7 +31,7 @@ AES-128-CBC operates on 128-bit blocks and supports key sizes of 128 bits. Ciphe
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
-#include "AES.h"
+#include "AES_128_CBC.h"
 
 void output(const char* title, uint8_t *data, uint32_t size) {
     printf("%s", title);
@@ -75,7 +75,7 @@ int main() {
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
-#include "AES.h"
+#include "AES_128_CBC.h"
 
 void output(const char* title, uint8_t *data, uint32_t size) {
     printf("%s", title);
@@ -127,7 +127,7 @@ int main() {
 
 ## Building and Integration
 
-This implementation is header-only, making it easy to integrate into your projects. Simply include the `AES.h` header file in your source code and link against the necessary libraries.
+This implementation is header-only, making it easy to integrate into your projects. Simply include the `AES_128_CBC.h` header file in your source code and link against the necessary libraries.
 
 ## Known Limitations
 
